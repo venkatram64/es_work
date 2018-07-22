@@ -97,7 +97,7 @@ public class BulkUploadService {
 
             BulkRequest bulkRequest = new BulkRequest();
             int count = 0;
-            int batch = 500;
+            int batch = 1000;
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
             String line;
 

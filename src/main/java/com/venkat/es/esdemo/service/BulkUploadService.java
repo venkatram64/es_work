@@ -1,9 +1,7 @@
 package com.venkat.es.esdemo.service;
 
 import com.venkat.es.esdemo.model.HostInfo;
-import org.apache.http.HeaderElement;
 import org.apache.http.HttpHost;
-import org.apache.http.ParseException;
 import org.apache.http.message.BasicHeader;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
@@ -26,6 +24,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 //https://tutorial-academy.com/elasticsearch-6-create-index-bulk-insert-delete-java-api/
 //https://www.programcreek.com/java-api-examples/?api=org.elasticsearch.action.bulk.BulkRequestBuilder
 //https://www.elastic.co/guide/en/kibana/current/tutorial-load-dataset.html
@@ -94,7 +93,6 @@ public class BulkUploadService {
         if (restHighLevelClient == null) return;
 
         try {
-
             createIndexIfNotExist(indexName, restHighLevelClient);
 
             BulkRequest bulkRequest = new BulkRequest();
@@ -103,7 +101,7 @@ public class BulkUploadService {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
             String line;
 
-            while((line = bufferedReader.readLine())!=null) {
+            while((line = bufferedReader.readLine()) != null) {
                 bulkRequest.add(new IndexRequest(indexName,"current").source(line, XContentType.JSON));
                 count++;
                 if(count%batch == 0) {
@@ -138,8 +136,5 @@ public class BulkUploadService {
         }catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-
 }

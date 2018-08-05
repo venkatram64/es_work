@@ -22,13 +22,15 @@ public class StaxReaderService {
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         String tagContent = null;
         try{
-            XMLStreamReader reader = xmlInputFactory.createXMLStreamReader(new FileInputStream(fileName));
+            //XMLStreamReader reader = xmlInputFactory.createXMLStreamReader(new FileInputStream(fileName));
+            XMLStreamReader reader =
+                    xmlInputFactory.createXMLStreamReader(
+                            ClassLoader.getSystemResourceAsStream(fileName));
             while(reader.hasNext()){
+
                 int event = reader.next();
-
                 switch (event){
-
-                    case XMLEvent.START_DOCUMENT:
+                    case XMLStreamConstants.START_DOCUMENT:
                         System.out.println("Start Document...");
                         break;
                     case XMLStreamConstants.START_ELEMENT:
@@ -66,13 +68,13 @@ public class StaxReaderService {
                                 break;
                         }
                         break;
-                    case XMLEvent.END_DOCUMENT:
+                    case XMLStreamConstants.END_DOCUMENT:
                         System.out.println("End Document..");
                         break;
                 }
             }
 
-        }catch (FileNotFoundException | XMLStreamException e){
+        }catch (XMLStreamException e){
             e.printStackTrace();
         }
         return empList;

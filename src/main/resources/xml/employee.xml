@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+    <employee id="1">
+        <age>49</age>
+        <firstName>Venkatram</firstName>
+        <lastName>Veerareddy</lastName>
+        <gender>Male</gender>
+    </employee>
+    <employee id="2">
+        <age>18</age>
+        <firstName>Strijan</firstName>
+        <lastName>Veerareddy</lastName>
+        <gender>Male</gender>
+    </employee>
+</employees>

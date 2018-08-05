@@ -18,7 +18,7 @@ public class StaxReaderServiceTest {
 
     @Test
     public void readEmpTest(){
-        List<Employee> list = staxReaderService.parseXML("employee.xml");
+        List<Employee> list = staxReaderService.parseXML("xml/employee.xml");
         for(Employee emp : list){
             System.out.println(emp.getId());
             System.out.println(emp.getFirstName());

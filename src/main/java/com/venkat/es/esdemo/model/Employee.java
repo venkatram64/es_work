@@ -1,5 +1,7 @@
 package com.venkat.es.esdemo.model;
 
+import java.util.List;
+
 public class Employee {
 
     private int id;
@@ -68,4 +70,28 @@ public class Employee {
                 ", age=" + age +
                 '}';
     }
+
+    public void printAll(List<Employee> empList){
+        for(Employee e: empList){
+            System.out.println(e);
+        }
+    }
+
+    public void printByFilter(List<Employee> empList, String filter){
+        for(Employee e: empList){
+            if(e.getLastName().startsWith(filter)) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void printByCondition(List<Employee> empList, Condition condition){
+        for(Employee e: empList){
+            if(condition.test(e)) {
+                System.out.println(e);
+            }
+        }
+    }
 }
+
+
